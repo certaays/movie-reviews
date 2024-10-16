@@ -33,27 +33,30 @@ import (
 	"learn-go/database"
 	"learn-go/migration"
 	"learn-go/route"
-	"net/http"
+	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/vercel/go-bridge/go/bridge"
 )
 
-func Main() *fiber.App {
+var app *fiber.App
+
+func init() {
 	// INITIAL DATABASE
 	database.DatabaseInit()
 
 	// RUN MIGRATION
 	migration.RunMigration()
 
-	app := fiber.New()
+	app = fiber.New()
 
 	// INITIAL ROUTE
 	route.RouteInit(app)
-
-	return app
 }
 
-func Handler(w http.ResponseWriter, r *http.Request) {
-	app := Main()
-	app.Handler()(w, r)
+// Handler function to be called by Vercel
+func Handler(ctx *bridge.RequestCtx) {
+	if err := app.Handler()(ctx); err != nil {
+		log.Printf("Error handling request: %v", err)
+	}
 }
