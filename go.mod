@@ -1,9 +1,12 @@
 module learn-go
 
-go 1.23.2
+go 1.22
+
+require github.com/vercel/go-bridge v0.0.0-20221108222652-296f4c6bdb6d
 
 require (
 	github.com/andybalholm/brotli v1.1.1 // indirect
+	github.com/aws/aws-lambda-go v1.47.0 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
