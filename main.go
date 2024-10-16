@@ -27,7 +27,7 @@
 // 	Main()
 // }
 
-package main
+package handler
 
 import (
 	"learn-go/database"
