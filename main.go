@@ -8,7 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func main() {
+func Main() {
 	//INITIAL DATABASE
 	database.DatabaseInit()
 
